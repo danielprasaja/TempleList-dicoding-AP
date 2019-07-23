@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="templeImgWidth">150dp</dimen>
+    <dimen name="templeImgHeight">150dp</dimen>
+    <dimen name="marginPaddingHorizontal">16dp</dimen>
+    <dimen name="marginPaddingVertical">16dp</dimen>
+</resources>
