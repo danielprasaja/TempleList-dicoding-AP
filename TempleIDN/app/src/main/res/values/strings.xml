@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Temple-IDN</string>
     <string name="temple_name">Temple Name</string>
+    <string name="temple_location">Temple Location</string>
+    <string name="sumber_gambar">Sumber Gambar: %1$s</string>
+    <string name="temple_detail">Detail Informasi dari Candi tersebut</string>
+
 </resources>

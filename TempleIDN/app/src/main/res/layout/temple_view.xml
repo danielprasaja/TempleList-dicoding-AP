@@ -31,6 +31,14 @@
             android:gravity="center"
             tools:text="@string/temple_name"/>
 
+        <TextView
+            android:id="@+id/temple_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:gravity="center"
+            tools:text="@string/temple_location"/>
+
     </LinearLayout>
 
     <View

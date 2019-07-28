@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class TempleAdapter extends RecyclerView.Adapter<TempleAdapter.TempleViewHolder> {
     private ArrayList<Temple> templeList;
+    private OnItemClickCallback onItemClickCallback;
+
+    //Konstruktor untuk kelas TempleAdapter
     public TempleAdapter(ArrayList<Temple> list){
         this.templeList = list;
     }
@@ -28,13 +31,21 @@ public class TempleAdapter extends RecyclerView.Adapter<TempleAdapter.TempleView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TempleViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final TempleViewHolder holder, int position) {
         Temple temple = templeList.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(temple.getImage())
                 .apply(new RequestOptions().override(200, 200))
                 .into(holder.imgTemple);
-        holder.textTemple.setText(temple.getName());
+        holder.nameTemple.setText(temple.getName());
+        holder.locationTemple.setText(temple.getLocation());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(templeList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -44,12 +55,22 @@ public class TempleAdapter extends RecyclerView.Adapter<TempleAdapter.TempleView
 
     class TempleViewHolder extends RecyclerView.ViewHolder {
         ImageView imgTemple;
-        TextView textTemple;
+        TextView nameTemple;
+        TextView locationTemple;
 
         TempleViewHolder(@NonNull View itemView) {
             super(itemView);
-            textTemple = itemView.findViewById(R.id.temple_name);
             imgTemple = itemView.findViewById(R.id.temple_img);
+            nameTemple = itemView.findViewById(R.id.temple_name);
+            locationTemple = itemView.findViewById(R.id.temple_location);
         }
+    }
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback;
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(Temple data);
     }
 }
